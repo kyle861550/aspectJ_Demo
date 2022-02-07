@@ -30,6 +30,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         flowFunction();
 
+//        testStaticFunction();
+
+    }
+
+
+    @MyHook(value = 4, message = "testStaticFunction")
+    public static void testStaticFunction() {
+        Log.i("TEST123", "MainActivity#testStaticFunction");
+    }
+
+    @MyHook(value = 5, message = "testStaticFunctionWithReturn")
+    public static int testStaticFunctionWithReturn() {
+        Log.i("TEST123", "MainActivity#testStaticFunctionWithReturn");
+
+        return 123;
     }
 
     @MyHook(value = 2, message = "testStudentBean")

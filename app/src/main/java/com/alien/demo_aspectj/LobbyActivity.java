@@ -15,6 +15,10 @@ public class LobbyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lobby);
 
+        MainActivity.testStaticFunction();
+
+        Log.i("TEST123", "~~~~~: " + MainActivity.testStaticFunctionWithReturn());
+
         findViewById(R.id.Test_Lobby_Btn).setOnClickListener((__) -> {
 
             Log.i("TEST123", "LobbyActivity#onClick start");

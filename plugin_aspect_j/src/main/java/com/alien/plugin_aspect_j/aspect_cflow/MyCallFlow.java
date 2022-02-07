@@ -8,7 +8,7 @@ import org.aspectj.lang.annotation.Aspect;
 
 import java.util.Arrays;
 
-@Aspect
+//@Aspect
 public class MyCallFlow {
 
     // 會調用本身

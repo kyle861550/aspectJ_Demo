@@ -21,8 +21,9 @@ public class HookAnnotation {
         Log.d("TEST123", "HookAnnotation#cutAnnotation !!~~");
     }
 
+    // 如果你要 Hook 的參數有返回值，擬就也要有返回值，可以使用 Object (Object 包含 void)
     @Around("cutAnnotation(myHook)")
-    public void proceedingJoinPoint(final ProceedingJoinPoint point, MyHook myHook) throws IllegalAccessException {
+    public Object proceedingJoinPoint(final ProceedingJoinPoint point, MyHook myHook) throws IllegalAccessException {
         Context context = null;
 
         final Object thisObject = point.getThis();
@@ -32,16 +33,17 @@ public class HookAnnotation {
         } else if (thisObject instanceof Fragment) {
             context = ((Fragment) thisObject).getActivity();
         }
-        if (null == context || myHook == null) {
-            throw new IllegalAccessException("null == context || myHook == null is null");
-        }
+//        if (null == context || myHook == null) {
+//            throw new IllegalAccessException("null == context || myHook == null is null");
+//        }
 
         Log.d("TEST123", "HookAnnotation#proceedingJoinPoint: message=" + myHook.message() + ", value=" + Arrays.toString(myHook.value()));
 
-        Method[] declaredMethods = context.getClass().getDeclaredMethods();
-        for(Method method : declaredMethods) {
-            Log.i("TEST123", "HookAnnotation#proceedingJoinPoint: " + method.getName());
-        }
+//        Method[] declaredMethods = context.getClass().getDeclaredMethods();
+//        for(Method method : declaredMethods) {
+//            Log.i("TEST123", "HookAnnotation#proceedingJoinPoint: " + method.getName());
+//        }
+        return 222;
 
     }
 }
