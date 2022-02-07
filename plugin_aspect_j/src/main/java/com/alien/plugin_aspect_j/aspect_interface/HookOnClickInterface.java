@@ -32,16 +32,5 @@ public class HookOnClickInterface {
             throwable.printStackTrace();
         }
     }
-//
-//    // TODO: 沒反應
-//    @Around("call(* android.view.View.OnClickListener.onClick(..))")
-//    public void callClick(ProceedingJoinPoint joinPoint) {
-//        Log.i("TEST123", "HookOnClick#callClick ~~~ call method :D");
-//        try {
-//            joinPoint.proceed(joinPoint.getArgs());
-//        } catch (Throwable throwable) {
-//            throwable.printStackTrace();
-//        }
-//    }
 
 }

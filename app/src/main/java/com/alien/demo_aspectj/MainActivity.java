@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         testStudentBean();
 
         flowFunction();
+        
     }
 
     private void testStudentBean() {
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         String name = studentBean1.getName();
         Log.i("TEST123", "MainActivity#testStudentBean: " + name);
+        Log.i("TEST123", "MainActivity#testStudentBean: " + studentBean1.getAge());
     }
 
     private void flowFunction() {
