@@ -2,9 +2,12 @@ package com.alien.demo_aspectj;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+
+import com.alien.plugin_aspect_j.aspect_annotation.MyHook;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,9 +29,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         testStudentBean();
 
         flowFunction();
-        
+
     }
 
+    @MyHook(value = 2, message = "testStudentBean")
     private void testStudentBean() {
         StudentBean studentBean1 = new StudentBean("Alien", 18);
         studentBean1.setName("Pan");
@@ -41,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Log.i("TEST123", "MainActivity#testStudentBean: " + studentBean1.getAge());
     }
 
+    @MyHook(value = 3, message = "flowFunction")
     private void flowFunction() {
         logFunction();
 
@@ -87,14 +92,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Map<String, Integer> firebaseMap = getFirebaseMap();
 
-//        Intent intent = new Intent(this, LobbyActivity.class);
-//        startActivity(intent);
-//
-//        testPointCut();
+        Intent intent = new Intent(this, LobbyActivity.class);
+        startActivity(intent);
+
+        testPointCut();
 
         Log.i("TEST123", "MainActivity#onClick finish");
     }
 
+    @MyHook(value = 1, message = "testPointCutThrow")
     private void testPointCutThrow() {
         testThrowException();
     }
