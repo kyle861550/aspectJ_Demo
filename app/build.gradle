@@ -51,7 +51,6 @@ final def log = project.logger
 final def variants = project.android.applicationVariants
 
 variants.all { variant ->
-    // 注意这里控制debug下生效，可以自行控制是否生效
     if (!variant.buildType.isDebuggable()) {
         log.debug("Skipping non-debuggable build type '${variant.buildType.name}'.")
         return
@@ -61,7 +60,7 @@ variants.all { variant ->
     javaCompile.doLast {
         String[] args = ["-showWeaveInfo",
                          "-1.8", // java1.8
-                         "-inpath", javaCompile.destinationDir.toString(), //需要处理的class文件目录
+                         "-inpath", javaCompile.destinationDir.toString(),
                          "-aspectpath", javaCompile.classpath.asPath,
                          "-d", javaCompile.destinationDir.toString(),
                          "-classpath", javaCompile.classpath.asPath,
