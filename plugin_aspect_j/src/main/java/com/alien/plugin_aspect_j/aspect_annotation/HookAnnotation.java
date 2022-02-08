@@ -10,7 +10,6 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 
-import java.lang.reflect.Method;
 import java.util.Arrays;
 
 @Aspect
@@ -37,7 +36,7 @@ public class HookAnnotation {
 //            throw new IllegalAccessException("null == context || myHook == null is null");
 //        }
 
-        Log.d("TEST123", "HookAnnotation#proceedingJoinPoint: message=" + myHook.message() + ", value=" + Arrays.toString(myHook.value()));
+        Log.d("TEST123", "HookAnnotation#proceedingJoinPoint: message=" + myHook.message() + ", value=" + Arrays.toString(myHook.value()) + ", Thread: " + Thread.currentThread().getName());
 
 //        Method[] declaredMethods = context.getClass().getDeclaredMethods();
 //        for(Method method : declaredMethods) {

@@ -17,7 +17,7 @@ public class LobbyActivity extends AppCompatActivity {
 
         MainActivity.testStaticFunction();
 
-        Log.i("TEST123", "~~~~~: " + MainActivity.testStaticFunctionWithReturn());
+        Log.i("TEST123", "~~~~~: " + MainActivity.testStaticFunctionWithReturn() + ", Thread: " + Thread.currentThread().getName());
 
         findViewById(R.id.Test_Lobby_Btn).setOnClickListener((__) -> {
 
