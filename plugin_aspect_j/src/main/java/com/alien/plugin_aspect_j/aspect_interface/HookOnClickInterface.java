@@ -8,6 +8,7 @@ import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.reflect.SourceLocation;
 
 @Aspect
 public class HookOnClickInterface {
@@ -16,6 +17,11 @@ public class HookOnClickInterface {
 //    @Before("execution(* android.view.View.OnClickListener.onClick(..))")
 //    public void beforeClick(JoinPoint joinPoint) {
 //        Log.i("TEST123", "HookOnClick#beforeClick ~~~ before method :D");
+//        SourceLocation sourceLocation = joinPoint.getSourceLocation();
+//
+//        String s = joinPoint.getSignature().toString();
+//        Log.i("TEST123", "HookOnClick#Before: " + s + ", fileName: " + sourceLocation.getFileName() +
+//                ", getKind : " + joinPoint.getKind() + ", target: " + joinPoint.getTarget());
 //    }
 
 //    @After("execution(* android.view.View.OnClickListener.onClick(..))")
@@ -31,6 +37,17 @@ public class HookOnClickInterface {
         } catch (Throwable throwable) {
             throwable.printStackTrace();
         }
+    }
+
+    // Interface 好像不能用 Hook
+    @Before("call(* android.view.View.OnClickListener.onClick(..))")
+    public void callBeforeClick(JoinPoint joinPoint) {
+        Log.i("TEST123", "HookOnClick#callBeforeClick ~~~ before method :D");
+        SourceLocation sourceLocation = joinPoint.getSourceLocation();
+
+        String s = joinPoint.getSignature().toString();
+        Log.i("TEST123", "HookOnClick#callBeforeClick: " + s + ", fileName: " + sourceLocation.getFileName() +
+                ", getKind : " + joinPoint.getKind() + ", target: " + joinPoint.getTarget());
     }
 
 }

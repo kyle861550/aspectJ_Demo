@@ -2,9 +2,11 @@ package com.alien.plugin_aspect_j.aspect_call;
 
 import android.util.Log;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 
 @Aspect
 public class HookMethodByCall {
@@ -17,5 +19,10 @@ public class HookMethodByCall {
         } catch (Throwable throwable) {
             throwable.printStackTrace();
         }
+    }
+
+    @Before("call(* *..*.testStudentBean(..))")
+    public void callClickBefore(JoinPoint joinPoint) {
+        Log.i("TEST123", "HookMethodByCall#callClickBefore ~~~ call method :D");
     }
 }
