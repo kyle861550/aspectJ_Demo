@@ -43,6 +43,13 @@ public class HookAnnotation {
 //        for(Method method : declaredMethods) {
 //            Log.i("TEST123", "HookAnnotation#proceedingJoinPoint: " + method.getName());
 //        }
+
+        try {
+            point.proceed();
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
+
         return 222;
 
     }
