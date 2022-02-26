@@ -37,6 +37,8 @@ public class AspectJActivity extends AppCompatActivity {
     }
 
     private void ttt() {
-        new AspectJBean_1(9527);
+        AspectJBean_1 aspectJBean_1 = new AspectJBean_1(9527);
+
+        System.out.println("aspectJBean_1.name" + aspectJBean_1.name);
     }
 }
