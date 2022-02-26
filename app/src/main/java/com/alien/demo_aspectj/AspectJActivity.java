@@ -35,4 +35,8 @@ public class AspectJActivity extends AppCompatActivity {
     private void execution_around() {
         System.out.println("execution_around");
     }
+
+    private void ttt() {
+        new AspectJBean_1(9527);
+    }
 }
